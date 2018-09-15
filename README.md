@@ -92,6 +92,11 @@ client.connect();
 ```
 **NOTE: Before making a connection, make sure you have defined the events previously.**
 
+To finish the connection
+```java
+client.disconnect();
+```
+
 ## Events
 ### Syntax
 ```
