@@ -123,7 +123,7 @@ client.on("error", args -> {
 });
 ```
 
-### Message
+### Message received
 ```java
 client.on("message", args -> {
   Message message = (Message) args.value("message");
@@ -132,19 +132,30 @@ client.on("message", args -> {
 ```
 
 ## Message
-Sent to the server:
+Declaring
 ```java
-// You can use multiple keys and values directly in the constructor without having to create a new map, useful for small messages.
-Message m = new Message<>("one", 1, "two", 2, "three", 3); // Message<String, Integer> or simply Map<String, Object>
-
-/* 
-  to return the json content of the message
-  for example: {"content":{"key":"socket-client", "value":"unknown"}}
+/*
+    You can use multiple keys and values directly in the constructor without having to create a new map, useful for small messages.
+    The message object is immutable.
  */
-String json = m.toJson();
+new Message<>(map);
+new Message<>(k, v);
+new Message<>(k1, v1, k2, v2);
+new Message<>(k1, v1, k2, v2, k3, v3);
+new Message<>(k1, v1, k2, v2, k3, v3, k4, v4);
+new Message<>(k1, v1, k2, v2, k3, v3, k4, v4, k5, v5);
+```
+
+The message
+```java
+/* 
+    to return the json content of the message
+    for example: {"content":{"key":"socket-client", "value":"unknown"}}
+ */
+String json = message.toJson();
 
 // sending the message
-client.write(m);
+client.write(message);
 ```
   
 ## Needing help?
