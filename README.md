@@ -53,8 +53,6 @@ client.addOption("OUT_OF_BAND_DATA", true);
 ### Connecting
 Assign an IP address or port only.
 You can also assign address and port directly in the class.
-
-** As of version 1.0.1 the mandatory use of the port has been removed. **
 ```java
 client.setAddress("127.0.0.1");
 client.setPort(8080);
