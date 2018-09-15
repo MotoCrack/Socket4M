@@ -105,39 +105,7 @@ client.on(event, args -> {
 });
 ```
 
-### When to disconnect
-This event has no arguments.
-```java
-client.on("disconnect", args -> {
-  // ...
-});
-```
-
-### Message
-Receive from the server:
-```java
-client.on("message", args -> {
-  Message message = (Message) args.value("message");
-  client.log(Level.INFO, "Message received from the server: " + message.toJson());
-});
-```
-
-Sent to the server:
-```java
-// You can use multiple keys and values directly in the constructor without having to create a new map, useful for small messages.
-Message m = new Message<>("one", 1, "two", 2, "three", 3); // Message<String, Integer> or simply Map<String, Object>
-
-/* 
-  to return the json content of the message
-  for example: {"content":{"key":"socket-client", "value":"unknown"}}
- */
-String json = m.toJson();
-
-// sending the message
-client.write(m);
-```
-
-### Handling connection errors
+### Error
 ```java
 client.on("error", args -> {
   SocketCloseReason reason = (SocketCloseReason) arguments.value("reason");
@@ -153,6 +121,30 @@ client.on("error", args -> {
 
   ((Throwable) arguments.value("throwable")).printStackTrace();
 });
+```
+
+### Message
+```java
+client.on("message", args -> {
+  Message message = (Message) args.value("message");
+  client.log(Level.INFO, "Message received from the server: " + message.toJson());
+});
+```
+
+## Message
+Sent to the server:
+```java
+// You can use multiple keys and values directly in the constructor without having to create a new map, useful for small messages.
+Message m = new Message<>("one", 1, "two", 2, "three", 3); // Message<String, Integer> or simply Map<String, Object>
+
+/* 
+  to return the json content of the message
+  for example: {"content":{"key":"socket-client", "value":"unknown"}}
+ */
+String json = m.toJson();
+
+// sending the message
+client.write(m);
 ```
   
 ## Needing help?
