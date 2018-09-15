@@ -63,7 +63,7 @@ Or assign only at the time of connection.
 client.connect("127.0.0.1", 8080);
 ```
 
-Assigning `TIMEOUT` to the connection.
+Assigning **TIMEOUT** to the connection.
 ```java
 // 10 seconds
 client.setTimeout(10000);
@@ -72,7 +72,7 @@ client.setTimeout(10000);
 client.connect("127.0.0.1", 8080, 10000);
 ```
 
-Then
+Then connect.
 ```java
 client.connect(8080, reason -> {
   if(reason == SocketOpenReason.CONNECT) {
