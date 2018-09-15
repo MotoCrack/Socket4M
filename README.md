@@ -41,7 +41,7 @@ client.setLogger(yourLogger);
 ```
 
 #### Client options
-This client supports some options that the [Socket] class (https://docs.oracle.com/javase/8/docs/api/java/net/Socket.html) contains.
+This client supports some options that the [Socket](https://docs.oracle.com/javase/8/docs/api/java/net/Socket.html) class contains.
 ```java
 // socket.setKeepAlive(true);
 client.addOption("KEEP_ALIVE", true);
